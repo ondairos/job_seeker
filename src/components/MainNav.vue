@@ -42,7 +42,7 @@ export default {
         </div>
       </div>
 
-      <SubNav />
+      <SubNav v-if="isLoggedIn" />
     </div>
   </header>
 </template>
