@@ -1,10 +1,11 @@
 <script>
 import ActionButton from "@/components/ActionButton.vue";
 import ImageProfile from "@/components/ProfileImage.vue";
+import SubNav from "@/components/SubNav.vue";
 
 export default {
   name: "MainNav",
-  components: { ActionButton, ImageProfile },
+  components: { ActionButton, ImageProfile, SubNav },
   data() {
     return {
       company: "Job Seeker",
@@ -40,6 +41,8 @@ export default {
           <ImageProfile v-else />
         </div>
       </div>
+
+      <SubNav />
     </div>
   </header>
 </template>

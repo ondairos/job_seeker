@@ -12,6 +12,9 @@
     "test:watch": "jest --watchAll"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",
     "vue": "^3.3.4",
