@@ -1,11 +1,11 @@
 <script setup>
 import { RouterView } from "vue-router";
+import MainNav from "@/components/Navigation/MainNav.vue";
 </script>
 
 <template>
-  <section class="flex">
+  <section>
+    <MainNav />
     <RouterView />
   </section>
 </template>
-
-<style scoped></style>

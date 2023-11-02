@@ -5,7 +5,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import { createApp } from "vue";
 import App from "./App.vue";
-import router from "./router";
+import router from "@/router";
 
 library.add(faSearch);
 

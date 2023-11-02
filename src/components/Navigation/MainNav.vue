@@ -10,7 +10,6 @@ export default {
     return {
       company: "Job Seeker",
       author: "Ioannis Kantiloros",
-      url: "https://careers.google.com",
       menuItems: ["Teams", "Locations", "Life at Job Seeker", "How we hire", "Students", "Jobs"],
       isLoggedIn: false,
     };
@@ -35,7 +34,9 @@ export default {
   <header :class="['w-full', 'text-sm', 'text-black', headerHeightClass]">
     <div class="fixed top-0 left-0 w-full h-16 bg-white">
       <div class="flex flex-nowrap h-full px-8 mx-auto border-b border-brand-gray-1">
-        <a :href="url" class="flex items-center text-black h-full text-xl"> {{ company }} </a>
+        <router-link to="/" class="flex items-center text-black h-full text-xl">{{
+          company
+        }}</router-link>
 
         <nav class="h-full ml-12">
           <ul class="flex h-full p-0 m-0 list-none">
