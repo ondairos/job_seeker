@@ -10,7 +10,32 @@ export default {
     return {
       company: "Job Seeker",
       author: "Ioannis Kantiloros",
-      menuItems: ["Teams", "Locations", "Life at Job Seeker", "How we hire", "Students", "Jobs"],
+      menuItems: [
+        {
+          text: "Teams",
+          url: "/",
+        },
+        {
+          text: "Locations",
+          url: "/",
+        },
+        {
+          text: "Life at Job Seeker",
+          url: "/",
+        },
+        {
+          text: "How we hire",
+          url: "/",
+        },
+        {
+          text: "Students",
+          url: "/",
+        },
+        {
+          text: "Jobs",
+          url: "/jobs/results",
+        },
+      ],
       isLoggedIn: false,
     };
   },
@@ -40,8 +65,10 @@ export default {
 
         <nav class="h-full ml-12">
           <ul class="flex h-full p-0 m-0 list-none">
-            <li v-for="item in menuItems" :key="item" class="h-full ml-9 first:ml-0">
-              <a href="" class="flex items-center h-full py-2.5">{{ item }}</a>
+            <li v-for="item in menuItems" :key="item.text" class="h-full ml-9 first:ml-0">
+              <router-link :to="item.url" class="flex items-center h-full py-2.5">{{
+                item.text
+              }}</router-link>
             </li>
           </ul>
         </nav>

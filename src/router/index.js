@@ -6,12 +6,17 @@ const router = createRouter({
     {
       path: "/",
       name: "Home",
-      component: () => import("../views/HomeView.vue"),
+      component: () => import("@/views/HomeView.vue"),
     },
     {
       path: "/jobs/results",
       name: "JobsResults",
-      component: () => import("../views/JobsResultsView.vue"),
+      component: () => import(/* webpackChunkName: "jobs" */ "@/views/JobsResultsView.vue"),
+    },
+    {
+      path: "/jobs/results/:id",
+      name: "JobList",
+      component: () => import(/* webpackChunkName: "jobs" */ "@/views/JobView.vue"),
     },
   ],
 });
