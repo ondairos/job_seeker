@@ -18,6 +18,11 @@ const router = createRouter({
       name: "JobList",
       component: () => import(/* webpackChunkName: "jobs" */ "@/views/JobView.vue"),
     },
+    {
+      path: "/teams",
+      name: "Teams",
+      component: () => import("@/views/TeamsView.vue"),
+    },
   ],
   scrollBehavior() {
     return {

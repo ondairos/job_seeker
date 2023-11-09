@@ -15,7 +15,7 @@ export default {
       menuItems: [
         {
           text: "Teams",
-          url: "/",
+          url: "/teams",
         },
         {
           text: "Locations",

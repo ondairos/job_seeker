@@ -1,6 +1,8 @@
 # Job Seeker
 
-This template should help get you started developing with Vue 3 in Vite.
+Job Search application built with VueJS
+
+Based on Googles Job Search Platform
 
 ## Recommended IDE Setup
 
