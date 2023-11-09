@@ -1,5 +1,5 @@
 <script>
-import all_data from "../../../db.json";
+import { mapState } from "vuex";
 
 import JobListing from "@/components/JobResults/JobListing.vue";
 export default {
@@ -7,11 +7,7 @@ export default {
   components: {
     JobListing,
   },
-  data() {
-    return {
-      jobs: all_data.jobs,
-    };
-  },
+
   computed: {
     currentPage() {
       const currentPageString = this.$route.query.page || "1";
@@ -33,6 +29,10 @@ export default {
       const lastJobIndex = pageNumber * 10;
       return this.jobs.slice(firstJobIndex, lastJobIndex);
     },
+    ...mapState(["jobs"]),
+  },
+  mounted() {
+    this.$store.dispatch("fetchJobs");
   },
 };
 </script>

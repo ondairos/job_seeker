@@ -3,6 +3,8 @@ import ActionButton from "@/components/Shared/ActionButton.vue";
 import ImageProfile from "@/components/Navigation/ProfileImage.vue";
 import SubNav from "@/components/Navigation/SubNav.vue";
 
+import { mapState, mapMutations } from "vuex";
+
 export default {
   name: "MainNav",
   components: { ActionButton, ImageProfile, SubNav },
@@ -36,7 +38,6 @@ export default {
           url: "/jobs/results",
         },
       ],
-      isLoggedIn: false,
     };
   },
   computed: {
@@ -46,11 +47,15 @@ export default {
         "h-32": this.isLoggedIn,
       };
     },
+    ...mapState({
+      isLoggedIn: "isLoggedIn",
+    }),
   },
   methods: {
     handleClick() {
-      return (this.isLoggedIn = !this.isLoggedIn);
+      this.$store.commit("LOGIN_USER");
     },
+    ...mapMutations(["LOGIN_USER"]),
   },
 };
 </script>
