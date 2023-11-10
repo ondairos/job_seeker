@@ -4,6 +4,7 @@ const state = () => {
     jobs: [],
     spotlights: [],
     selectedOrgs: [],
+    selectedJobTypes: [],
   };
 };
 
