@@ -6,7 +6,7 @@ import { faSearch, faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-ic
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "@/router";
-import store from "../store/index.js";
+import store from "@/store";
 
 library.add(faSearch);
 library.add(faAngleDown);
