@@ -3,23 +3,23 @@ import Accordion from "@/components/Shared/Accordion.vue";
 import { mapGetters } from "vuex";
 
 export default {
-  name: "JobFiltersSidebarOrgs",
+  name: "JobFiltersSidebarJobTypes",
   components: {
     Accordion,
   },
   data() {
     return {
-      selectedOrganizations: [],
+      selectedJobTypes: [],
     };
   },
   computed: {
     ...mapGetters({
-      unique_orgs: "GET_UNIQUE_ORGS",
+      uniqueJobTypes: "GET_UNIQUE_JOB_TYPES",
     }),
   },
   methods: {
-    selectOrg() {
-      this.$store.commit("ADD_SELECTED_ORGS", this.selectedOrganizations);
+    selectJobType() {
+      this.$store.commit("ADD_SELECTED_JOB_TYPES", this.selectedJobTypes);
       this.$router.push({ name: "JobsResults" });
     },
   },
@@ -27,20 +27,20 @@ export default {
 </script>
 
 <template>
-  <accordion header="Organizations">
+  <accordion header="Job Types">
     <div class="mt-5">
       <fieldset>
         <ul class="flex flex-row flex-wrap">
-          <li v-for="org in unique_orgs" :key="org" class="w-1/2 h-8">
+          <li v-for="jobType in uniqueJobTypes" :key="jobType" class="w-1/2 h-8">
             <input
-              v-model="selectedOrganizations"
-              :value="org"
-              :id="org"
+              v-model="selectedJobTypes"
+              :value="jobType"
+              :id="jobType"
               type="checkbox"
               class="mr-3"
-              @change="selectOrg"
+              @change="selectJobType"
             />
-            <label :for="org">{{ org }}</label>
+            <label :for="jobType">{{ jobType }}</label>
           </li>
         </ul>
       </fieldset>

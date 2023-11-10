@@ -13,6 +13,9 @@ const mutations = {
   ADD_SELECTED_ORGS(state, payload) {
     state.selectedOrgs = payload;
   },
+  ADD_SELECTED_JOB_TYPES(state, payload) {
+    state.selectedJobTypes = payload;
+  },
 };
 
 export default mutations;

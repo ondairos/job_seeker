@@ -10,7 +10,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      filteredJobs: "GET_FILTERED_JOBS_BY_ORGS",
+      filteredJobs: "GET_FILTERED_JOBS",
     }),
     currentPage() {
       const currentPageString = this.$route.query.page || "1";
