@@ -6,6 +6,7 @@ export const state = () => {
     isLoggedIn: false,
     jobs: [],
     spotlights: [],
+    selectedOrgs: [],
   };
 };
 
@@ -19,6 +20,25 @@ export const mutations = {
   RECEIVE_SPOTLIGHTS(state) {
     state.spotlights = all_data.spotlights;
   },
+  ADD_SELECTED_ORGS(state, payload) {
+    state.selectedOrgs = payload;
+  },
+};
+
+export const getters = {
+  GET_UNIQUE_ORGS(state) {
+    const uniqueOrgs = new Set();
+    state.jobs.forEach((element) => {
+      uniqueOrgs.add(element.organization);
+    });
+    return uniqueOrgs;
+  },
+  GET_FILTERED_JOBS_BY_ORGS(state) {
+    const filteredJobs = state.jobs.filter((element) =>
+      state.selectedOrgs.includes(element.organization)
+    );
+    return filteredJobs.length > 0 ? filteredJobs : state.jobs;
+  },
 };
 
 export const actions = {
@@ -30,6 +50,7 @@ export const actions = {
 const store = createStore({
   state,
   mutations,
+  getters,
   actions,
   // strict: process.env.NODE_ENV !== "production"
 });

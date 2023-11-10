@@ -1,7 +1,11 @@
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "SubNav",
   computed: {
+    ...mapGetters({
+      filteredJobs: "GET_FILTERED_JOBS_BY_ORGS",
+    }),
     onJobResultsPage() {
       return this.$route.name === "JobsResults";
     },
@@ -17,7 +21,9 @@ export default {
     <div class="flex items-center h-full px-8">
       <div>
         <font-awesome-icon :icon="['fas', 'search']" class="mr-2" />
-        <span><span class="text-brand-green-1">165</span> jobs matched</span>
+        <span
+          ><span class="text-brand-green-1">{{ filteredJobs.length }}</span> jobs matched</span
+        >
       </div>
     </div>
   </div>

@@ -16,7 +16,11 @@ export default {
 <template>
   <ul>
     <li v-for="spotlight in spotlights" :key="spotlight.id">
-      <slot :spotlight="spotlight"></slot>
+      <slot
+        :img="spotlight.img"
+        :title="spotlight.title"
+        :description="spotlight.description"
+      ></slot>
     </li>
   </ul>
 </template>

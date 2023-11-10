@@ -1,5 +1,5 @@
 <script>
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 
 import JobListing from "@/components/JobResults/JobListing.vue";
 export default {
@@ -9,6 +9,9 @@ export default {
   },
 
   computed: {
+    ...mapGetters({
+      filteredJobs: "GET_FILTERED_JOBS_BY_ORGS",
+    }),
     currentPage() {
       const currentPageString = this.$route.query.page || "1";
       return Number.parseInt(currentPageString);
@@ -20,16 +23,15 @@ export default {
     },
     nextPage() {
       const nextPage = this.currentPage + 1;
-      const maxPage = Math.ceil(this.jobs.length / 10);
+      const maxPage = Math.ceil(this.filteredJobs.length / 10);
       return nextPage <= maxPage ? nextPage : undefined;
     },
     slicedJobs() {
       const pageNumber = this.currentPage;
       const firstJobIndex = (pageNumber - 1) * 10;
       const lastJobIndex = pageNumber * 10;
-      return this.jobs.slice(firstJobIndex, lastJobIndex);
+      return this.filteredJobs.slice(firstJobIndex, lastJobIndex);
     },
-    ...mapState(["jobs"]),
   },
   mounted() {
     this.$store.dispatch("fetchJobs");

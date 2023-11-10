@@ -1,10 +1,26 @@
 <script>
 import Accordion from "@/components/Shared/Accordion.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "JobFiltersSidebarOrgs",
   components: {
     Accordion,
+  },
+  data() {
+    return {
+      selectedOrganizations: [],
+    };
+  },
+  computed: {
+    ...mapGetters({
+      unique_orgs: "GET_UNIQUE_ORGS",
+    }),
+  },
+  methods: {
+    selectOrg() {
+      this.$store.commit("ADD_SELECTED_ORGS", this.selectedOrganizations);
+    },
   },
 };
 </script>
@@ -14,21 +30,16 @@ export default {
     <div class="mt-5">
       <fieldset>
         <ul class="flex flex-row flex-wrap">
-          <li class="w-1/2 h-8">
-            <input type="checkbox" class="mr-3" id="VueTube" />
-            <label for="VueTube">VueTube</label>
-          </li>
-          <li class="w-1/2 h-8">
-            <input type="checkbox" class="mr-3" id="betweenVue" />
-            <label for="betweenVue">betweenVue</label>
-          </li>
-          <li class="w-1/2 h-8">
-            <input type="checkbox" class="mr-3" id="Et Vue Brute" />
-            <label for="Et Vue Brute">Et Vue Brute</label>
-          </li>
-          <li class="w-1/2 h-8">
-            <input type="checkbox" class="mr-3" id="Vue and a Half Men" />
-            <label for="Vue and a Half Men">Vue and a Half Men</label>
+          <li v-for="org in unique_orgs" :key="org" class="w-1/2 h-8">
+            <input
+              v-model="selectedOrganizations"
+              :value="org"
+              :id="org"
+              type="checkbox"
+              class="mr-3"
+              @change="selectOrg"
+            />
+            <label :for="org">{{ org }}</label>
           </li>
         </ul>
       </fieldset>

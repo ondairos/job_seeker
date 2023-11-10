@@ -34,18 +34,18 @@ export default {
     </section>
 
     <spotlight class="flex flex-row justify-center pb-16">
-      <template #default="slotProps">
+      <template #default="{ img, title, description }">
         <router-link
           to="/jobs/results"
           class="flex flex-col mx-5 border rounded-sm border-slate-200 bg-slate-200 text-black w-72"
         >
-          <img :src="slotProps.spotlight.img" class="object-contain" />
+          <img :src="img" class="object-contain" />
 
           <div class="h-48 px-6 py-4 mt-3">
-            <h3 class="text-lg font-medium">{{ slotProps.spotlight.title }}</h3>
+            <h3 class="text-lg font-medium">{{ title }}</h3>
 
             <p class="mt-3 text-sm">
-              {{ slotProps.spotlight.description }}
+              {{ description }}
             </p>
           </div>
           <router-link to="/jobs/results" class="px-6 pb-4 text-sm text-brand-blue-1"
