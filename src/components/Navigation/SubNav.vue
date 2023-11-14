@@ -1,6 +1,6 @@
 <script>
 import useConfirmRoute from "@/helpers/useConfirmRoute.js";
-import { useFilteredJobs } from "@/store/helpers.js";
+import { useFilteredJobs } from "@/store/helpers.ts";
 
 export default {
   name: "SubNav",

@@ -1,4 +1,6 @@
-const state = () => {
+import { GlobalState } from "@/types";
+
+const state = (): GlobalState => {
   return {
     isLoggedIn: false,
     jobs: [],
