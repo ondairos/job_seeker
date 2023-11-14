@@ -1,0 +1,48 @@
+// {
+//   "compilerOptions": {
+//     "target": "ESnext",
+//     "module": "ESNext",
+//     "strict": true,
+//     "jsx": "preserve",
+//     "moduleResolution": "node",
+//     "allowJs": true,
+//     "skipLibCheck": true,
+//     "esModuleInterop": true,
+//     "allowSyntheticDefaultImports": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "useDefineForClassFields": true,
+//     "sourceMap": true,
+//     "baseUrl": ".",
+//     "types": [""],
+//     "paths": {
+//       "@/*": ["src/*"]
+//     },
+//     "lib": ["ESNext", "DOM", "DOM.Iterable", "ScriptHost"]
+//   },
+//   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
+//   "exclude": ["node_modules"]
+// }
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": ["vite/client", "vue"],
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["node_modules", "dist"]
+}

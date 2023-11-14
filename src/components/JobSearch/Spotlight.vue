@@ -1,14 +1,17 @@
 <script>
-import { mapState } from "vuex";
+import { useStore } from "vuex";
+import { onMounted, computed } from "vue";
 
 export default {
   name: "SpotLight",
 
-  computed: {
-    ...mapState(["spotlights"]),
-  },
-  mounted() {
-    this.$store.commit("RECEIVE_SPOTLIGHTS");
+  setup() {
+    const store = useStore();
+    const spotlights = computed(() => store.getters.GET_SPOTLIGHTS);
+
+    onMounted(() => store.commit("RECEIVE_SPOTLIGHTS"));
+
+    return { spotlights };
   },
 };
 </script>

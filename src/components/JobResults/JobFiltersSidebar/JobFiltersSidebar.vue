@@ -1,14 +1,22 @@
 <script>
 import ActionButton from "@/components/Shared/ActionButton.vue";
-import JobFiltersSidebarOrgs from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarOrgs.vue";
-import JobFiltersSidebarJobTypes from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarJobTypes.vue";
+import JobFiltersSidebarGroup from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarGroup.vue";
+
+import { useUniqueJobTypes, useUniqueOrgTypes } from "@/store/helpers";
 
 export default {
   name: "JobFiltersSidebar",
   components: {
     ActionButton,
-    JobFiltersSidebarOrgs,
-    JobFiltersSidebarJobTypes,
+    JobFiltersSidebarGroup,
+  },
+  setup() {
+    const ADD_SELECTED_JOB_TYPES = "ADD_SELECTED_JOB_TYPES";
+    const ADD_SELECTED_ORGS = "ADD_SELECTED_ORGS";
+    const uniqueJobTypes = useUniqueJobTypes();
+    const uniqueOrgs = useUniqueOrgTypes();
+
+    return { uniqueJobTypes, uniqueOrgs, ADD_SELECTED_JOB_TYPES, ADD_SELECTED_ORGS };
   },
 };
 </script>
@@ -23,8 +31,16 @@ export default {
         </div>
       </div>
 
-      <JobFiltersSidebarJobTypes />
-      <JobFiltersSidebarOrgs />
+      <JobFiltersSidebarGroup
+        header="Job Types"
+        :unique-values="uniqueJobTypes"
+        :mutation="ADD_SELECTED_JOB_TYPES"
+      />
+      <JobFiltersSidebarGroup
+        header="Organizations"
+        :uniqueValues="uniqueOrgs"
+        :mutation="ADD_SELECTED_ORGS"
+      />
     </section>
   </div>
 </template>

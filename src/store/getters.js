@@ -7,6 +7,10 @@ const getters = {
     return uniqueOrgs;
   },
 
+  GET_SPOTLIGHTS(state) {
+    return state.spotlights;
+  },
+
   GET_UNIQUE_JOB_TYPES(state) {
     const uniqueJobTypes = new Set();
     state.jobs.forEach((element) => {

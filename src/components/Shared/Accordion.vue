@@ -1,26 +1,25 @@
 <script>
+import { ref, computed } from "vue";
+
 export default {
   name: "AccordionSection",
+
   props: {
     header: {
       type: String,
       required: true,
     },
   },
-  data() {
-    return {
-      isOpen: false,
+  setup() {
+    const isOpen = ref(false);
+
+    const toggleIsOpen = () => {
+      isOpen.value = !isOpen.value;
     };
-  },
-  computed: {
-    caretIcon() {
-      return this.isOpen ? ["fas", "angle-up"] : ["fas", "angle-down"];
-    },
-  },
-  methods: {
-    toggleIsOpen() {
-      this.isOpen = !this.isOpen;
-    },
+
+    const caretIcon = computed(() => (isOpen.value ? ["fas", "angle-up"] : ["fas", "angle-down"]));
+
+    return { toggleIsOpen, caretIcon, isOpen };
   },
 };
 </script>

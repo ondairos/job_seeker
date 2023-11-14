@@ -1,14 +1,15 @@
 <script>
-import { mapGetters } from "vuex";
+import useConfirmRoute from "@/helpers/useConfirmRoute.js";
+import { useFilteredJobs } from "@/store/helpers.js";
+
 export default {
   name: "SubNav",
-  computed: {
-    ...mapGetters({
-      filteredJobs: "GET_FILTERED_JOBS",
-    }),
-    onJobResultsPage() {
-      return this.$route.name === "JobsResults";
-    },
+  setup() {
+    const filteredJobs = useFilteredJobs();
+
+    const onJobResultsPage = useConfirmRoute("JobsResults");
+
+    return { onJobResultsPage, filteredJobs };
   },
 };
 </script>

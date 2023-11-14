@@ -1,40 +1,38 @@
 <script>
-import { mapGetters } from "vuex";
+import { onMounted, computed } from "vue";
+import { useStore } from "vuex";
 
+import { useFilteredJobs } from "@/store/helpers";
 import JobListing from "@/components/JobResults/JobListing.vue";
+import useCurrentPage from "@/helpers/useCurrentPage";
+import usePreviousAndNextPages from "@/helpers/usePreviousAndNextPages";
+
 export default {
   name: "JobListings",
   components: {
     JobListing,
   },
 
-  computed: {
-    ...mapGetters({
-      filteredJobs: "GET_FILTERED_JOBS",
-    }),
-    currentPage() {
-      const currentPageString = this.$route.query.page || "1";
-      return Number.parseInt(currentPageString);
-    },
-    previousPage() {
-      const prevPage = this.currentPage - 1;
-      const firstPage = 1;
-      return prevPage >= firstPage ? prevPage : undefined;
-    },
-    nextPage() {
-      const nextPage = this.currentPage + 1;
-      const maxPage = Math.ceil(this.filteredJobs.length / 10);
-      return nextPage <= maxPage ? nextPage : undefined;
-    },
-    slicedJobs() {
-      const pageNumber = this.currentPage;
+  setup() {
+    const store = useStore();
+    onMounted(() => store.dispatch("fetchJobs"));
+
+    const filteredJobs = useFilteredJobs();
+
+    const currentPage = useCurrentPage();
+
+    const maxPage = computed(() => Math.ceil(filteredJobs.value.length / 10));
+
+    const { previousPage, nextPage } = usePreviousAndNextPages(currentPage, maxPage);
+
+    const slicedJobs = computed(() => {
+      const pageNumber = currentPage.value;
       const firstJobIndex = (pageNumber - 1) * 10;
       const lastJobIndex = pageNumber * 10;
-      return this.filteredJobs.slice(firstJobIndex, lastJobIndex);
-    },
-  },
-  mounted() {
-    this.$store.dispatch("fetchJobs");
+      return filteredJobs.value.slice(firstJobIndex, lastJobIndex);
+    });
+
+    return { slicedJobs, previousPage, currentPage, nextPage };
   },
 };
 </script>

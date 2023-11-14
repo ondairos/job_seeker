@@ -1,9 +1,9 @@
 <script>
+import { computed, toRefs } from "vue";
+
 export default {
   name: "ActionButton",
-  data() {
-    return {};
-  },
+
   props: {
     text: {
       type: String,
@@ -18,14 +18,17 @@ export default {
       },
     },
   },
-  computed: {
-    buttonClass() {
+
+  setup(props) {
+    const { type } = toRefs(props);
+
+    const buttonClass = computed(() => {
       return {
-        // primary: this.type === "primary",
-        // secondary: this.type === "secondary",
-        [this.type]: true,
+        [type.value]: true,
       };
-    },
+    });
+
+    return { buttonClass };
   },
 };
 </script>
