@@ -1,19 +1,24 @@
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
+
+import { Spotlight } from "@/types";
 import { useStore } from "vuex";
 import { onMounted, computed } from "vue";
 
-export default {
+import { key } from "@/store";
+
+export default defineComponent({
   name: "SpotLight",
 
   setup() {
-    const store = useStore();
-    const spotlights = computed(() => store.getters.GET_SPOTLIGHTS);
+    const store = useStore(key);
+    const spotlights = computed((): Spotlight[] => store.getters.GET_SPOTLIGHTS);
 
     onMounted(() => store.commit("RECEIVE_SPOTLIGHTS"));
 
     return { spotlights };
   },
-};
+});
 </script>
 
 <template>

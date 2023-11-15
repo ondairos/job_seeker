@@ -1,10 +1,14 @@
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
+
 import Accordion from "@/components/Shared/Accordion.vue";
 import { useStore } from "vuex";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
-export default {
+import { key } from "@/store";
+
+export default defineComponent({
   name: "JobFiltersSidebarGroup",
   components: {
     Accordion,
@@ -26,8 +30,8 @@ export default {
   },
 
   setup(props) {
-    const selectedValues = ref([]);
-    const store = useStore();
+    const selectedValues = ref<string[]>([]);
+    const store = useStore(key);
     const router = useRouter();
 
     const selectValue = () => {
@@ -37,7 +41,7 @@ export default {
 
     return { selectedValues, selectValue };
   },
-};
+});
 </script>
 
 <template>

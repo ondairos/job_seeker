@@ -1,5 +1,7 @@
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "TextInput",
   props: {
     placeholder: {
@@ -13,11 +15,12 @@ export default {
     },
   },
   methods: {
-    handleInput($event) {
-      this.$emit("handleInputData", $event.target.value);
+    handleInput($event: Event) {
+      const target = $event.target as HTMLInputElement;
+      this.$emit("handleInputData", target.value);
     },
   },
-};
+});
 </script>
 
 <template>

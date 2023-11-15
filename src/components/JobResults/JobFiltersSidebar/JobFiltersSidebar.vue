@@ -1,10 +1,12 @@
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
+
 import ActionButton from "@/components/Shared/ActionButton.vue";
 import JobFiltersSidebarGroup from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarGroup.vue";
 
 import { useUniqueJobTypes, useUniqueOrgTypes } from "@/store/helpers";
 
-export default {
+export default defineComponent({
   name: "JobFiltersSidebar",
   components: {
     ActionButton,
@@ -18,7 +20,7 @@ export default {
 
     return { uniqueJobTypes, uniqueOrgs, ADD_SELECTED_JOB_TYPES, ADD_SELECTED_ORGS };
   },
-};
+});
 </script>
 
 <template>

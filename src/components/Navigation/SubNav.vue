@@ -1,8 +1,9 @@
-<script>
-import useConfirmRoute from "@/helpers/useConfirmRoute.js";
-import { useFilteredJobs } from "@/store/helpers.ts";
+<script lang="ts">
+import { defineComponent } from "vue";
+import useConfirmRoute from "@/helpers/useConfirmRoute";
+import { useFilteredJobs } from "@/store/helpers";
 
-export default {
+export default defineComponent({
   name: "SubNav",
   setup() {
     const filteredJobs = useFilteredJobs();
@@ -11,7 +12,7 @@ export default {
 
     return { onJobResultsPage, filteredJobs };
   },
-};
+});
 </script>
 
 <template>

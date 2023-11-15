@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
 import { ref, computed } from "vue";
 
-export default {
+export default defineComponent({
   name: "AccordionSection",
 
   props: {
@@ -21,7 +22,7 @@ export default {
 
     return { toggleIsOpen, caretIcon, isOpen };
   },
-};
+});
 </script>
 
 <template>

@@ -1,20 +1,23 @@
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
+
 import { onMounted, computed } from "vue";
 import { useStore } from "vuex";
+import { key } from "@/store";
 
 import { useFilteredJobs } from "@/store/helpers";
 import JobListing from "@/components/JobResults/JobListing.vue";
 import useCurrentPage from "@/helpers/useCurrentPage";
 import usePreviousAndNextPages from "@/helpers/usePreviousAndNextPages";
 
-export default {
+export default defineComponent({
   name: "JobListings",
   components: {
     JobListing,
   },
 
   setup() {
-    const store = useStore();
+    const store = useStore(key);
     onMounted(() => store.dispatch("fetchJobs"));
 
     const filteredJobs = useFilteredJobs();
@@ -34,7 +37,7 @@ export default {
 
     return { slicedJobs, previousPage, currentPage, nextPage };
   },
-};
+});
 </script>
 
 <template>
