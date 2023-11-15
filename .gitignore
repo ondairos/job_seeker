@@ -27,4 +27,4 @@ coverage
 *.njsproj
 *.sln
 *.sw?
-src/playground2.js
+src/playground2.ts
