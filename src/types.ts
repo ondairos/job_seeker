@@ -2,7 +2,7 @@ export interface Job {
   id: number;
   title: string;
   organization: string;
-  degree: string;
+  degree: Degree;
   jobType: string;
   locations: string[];
   minimumQualifications: string[];
@@ -24,4 +24,11 @@ export interface GlobalState {
   spotlights: Spotlight[];
   selectedOrgs: string[];
   selectedJobTypes: string[];
+  selectedDegrees: Degree[];
+  degrees: Degree[];
+}
+
+export interface Degree {
+  id: number;
+  degree: string;
 }

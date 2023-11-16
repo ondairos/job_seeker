@@ -7,6 +7,8 @@ const state = (): GlobalState => {
     spotlights: [],
     selectedOrgs: [],
     selectedJobTypes: [],
+    selectedDegrees: [],
+    degrees: [],
   };
 };
 

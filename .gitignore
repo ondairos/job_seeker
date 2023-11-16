@@ -14,6 +14,7 @@ dist-ssr
 coverage
 *.local
 .env
+db2.json
 
 /cypress/videos/
 /cypress/screenshots/

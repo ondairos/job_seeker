@@ -1,9 +1,6 @@
 import { computed } from "vue";
-
 import { useStore } from "vuex";
-
 import { key } from "@/store";
-
 import { Job } from "@/types";
 
 export const useFilteredJobs = () => {
@@ -20,4 +17,9 @@ export const useUniqueJobTypes = () => {
 export const useUniqueOrgTypes = () => {
   const store = useStore(key);
   return computed<Set<string>>(() => store.getters.GET_UNIQUE_ORGS);
+};
+
+export const useUniqueDegrees = () => {
+  const store = useStore(key);
+  return computed<string[]>(() => store.getters.GET_UNIQUE_DEGREES);
 };

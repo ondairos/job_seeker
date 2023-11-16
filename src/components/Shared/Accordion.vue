@@ -1,6 +1,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ref, computed } from "vue";
+import { key } from "@/store";
+import { useStore } from "vuex";
 
 export default defineComponent({
   name: "AccordionSection",
@@ -12,11 +14,18 @@ export default defineComponent({
     },
   },
   setup() {
+    const store = useStore(key);
     const isOpen = ref(false);
 
     const toggleIsOpen = () => {
       isOpen.value = !isOpen.value;
     };
+
+    store.subscribe((mutation) => {
+      if (mutation.type === "CLEAR_ALL_USER_SELECTIONS") {
+        isOpen.value = false;
+      }
+    });
 
     const caretIcon = computed(() => (isOpen.value ? ["fas", "angle-up"] : ["fas", "angle-down"]));
 

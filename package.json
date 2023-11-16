@@ -10,7 +10,7 @@
     "format": "prettier --write src/",
     "test:unit": "jest --coverage",
     "test:watch": "jest --watchAll",
-    "backend": "json-server --watch db.json"
+    "backend": "json-server --watch db2.json"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",

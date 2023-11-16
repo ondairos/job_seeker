@@ -18,7 +18,10 @@ export default defineComponent({
 
   setup() {
     const store = useStore(key);
-    onMounted(() => store.dispatch("fetchJobs"));
+    onMounted(() => {
+      store.dispatch("fetchJobs");
+      store.dispatch("fetchDegrees");
+    });
 
     const filteredJobs = useFilteredJobs();
 
