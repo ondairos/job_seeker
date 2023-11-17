@@ -8,8 +8,6 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "test:unit": "jest --coverage",
-    "test:watch": "jest --watchAll",
     "backend": "json-server --watch db2.json"
   },
   "dependencies": {
