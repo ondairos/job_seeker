@@ -9,6 +9,7 @@ const state = (): GlobalState => {
     selectedJobTypes: [],
     selectedDegrees: [],
     degrees: [],
+    skillsSearchTerm: "",
   };
 };
 

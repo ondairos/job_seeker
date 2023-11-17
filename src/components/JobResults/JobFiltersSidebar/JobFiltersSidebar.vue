@@ -1,17 +1,22 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
+import { useRoute } from "vue-router";
 
 import Accordion from "@/components/Shared/Accordion.vue";
 import JobFiltersSidebarTop from "./JobFiltersSidebarTop.vue";
 import JobFiltersSidebarGroup from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarGroup.vue";
+import JobFiltersSidebarSkills from "./JobFiltersSidebarSkills.vue";
 
 import { useUniqueJobTypes, useUniqueOrgTypes, useUniqueDegrees } from "@/store/helpers";
+import { useStore } from "vuex";
+import { key } from "@/store";
 
 export default defineComponent({
   name: "JobFiltersSidebar",
   components: {
     JobFiltersSidebarGroup,
     JobFiltersSidebarTop,
+    JobFiltersSidebarSkills,
     Accordion,
   },
   setup() {
@@ -21,6 +26,17 @@ export default defineComponent({
     const uniqueJobTypes = useUniqueJobTypes();
     const uniqueOrgs = useUniqueOrgTypes();
     const uniqueDegrees = useUniqueDegrees();
+
+    // keep the role in the search field
+    const parseSkillsSearchTerm = () => {
+      const route = useRoute();
+      const role = route.query.role || "";
+
+      const store = useStore(key);
+      store.commit("UPDATE_SKILLS_SEARCH_TERM", role);
+    };
+
+    onMounted(parseSkillsSearchTerm);
 
     return {
       uniqueJobTypes,
@@ -38,6 +54,10 @@ export default defineComponent({
   <div class="flex flex-col p-4 bg-white text-black border-r border-solid border-brand-gray-1 w-96">
     <section class="pb-5">
       <JobFiltersSidebarTop />
+
+      <accordion header="Skills and Qualifications">
+        <JobFiltersSidebarSkills />
+      </accordion>
 
       <accordion header="Degrees">
         <JobFiltersSidebarGroup

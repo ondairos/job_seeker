@@ -26,6 +26,7 @@ export interface GlobalState {
   selectedJobTypes: string[];
   selectedDegrees: Degree[];
   degrees: Degree[];
+  skillsSearchTerm: string;
 }
 
 export interface Degree {

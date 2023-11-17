@@ -4,6 +4,7 @@ interface IncludeJobGetters {
   GET_INCLUDE_JOB_BY_ORG: (job: Job) => boolean;
   GET_INCLUDE_JOB_BY_TYPE: (job: Job) => boolean;
   GET_INCLUDE_JOB_BY_DEGREE: (job: Job) => boolean;
+  GET_INCLUDE_JOB_BY_SKILL: (job: Job) => boolean;
 }
 
 const getters = {
@@ -57,11 +58,18 @@ const getters = {
     };
   },
 
+  GET_INCLUDE_JOB_BY_SKILL(state: GlobalState) {
+    return (job: Job) => {
+      return job.title.toLowerCase().includes(state.skillsSearchTerm.toLowerCase());
+    };
+  },
+
   GET_FILTERED_JOBS(state: GlobalState, getters: IncludeJobGetters) {
     return state.jobs
       .filter((job) => getters.GET_INCLUDE_JOB_BY_ORG(job))
       .filter((job) => getters.GET_INCLUDE_JOB_BY_TYPE(job))
-      .filter((job) => getters.GET_INCLUDE_JOB_BY_DEGREE(job));
+      .filter((job) => getters.GET_INCLUDE_JOB_BY_DEGREE(job))
+      .filter((job) => getters.GET_INCLUDE_JOB_BY_SKILL(job));
   },
 };
 
