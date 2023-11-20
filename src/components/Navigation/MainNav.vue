@@ -65,14 +65,23 @@ export default defineComponent({
 <template>
   <header :class="['w-full', 'text-sm', 'text-black', headerHeightClass]">
     <div class="fixed top-0 left-0 w-full h-16 bg-white">
-      <div class="flex flex-nowrap h-full px-8 mx-auto border-b border-brand-gray-1">
-        <router-link to="/" class="flex items-center text-black h-full text-xl">{{
-          company
-        }}</router-link>
+      <div class="flex flex-nowrap h-full px-8 custom-sm:px-1 mx-auto border-b border-brand-gray-1">
+        <router-link
+          to="/"
+          class="flex md:flex custom-sm:m-0 items-center text-black h-full text-xl"
+          >{{ company }}</router-link
+        >
 
         <nav class="h-full ml-12">
           <ul class="flex h-full p-0 m-0 list-none">
-            <li v-for="item in menuItems" :key="item.text" class="h-full ml-9 first:ml-0">
+            <li
+              v-for="(item, index) in menuItems"
+              :key="item.text"
+              class="h-full ml-9 first:ml-0"
+              :class="{
+                'hidden sm:flex': index !== 0 && index !== menuItems.length - 1,
+              }"
+            >
               <router-link :to="item.url" class="flex items-center h-full py-2.5">{{
                 item.text
               }}</router-link>

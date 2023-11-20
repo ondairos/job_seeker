@@ -35,7 +35,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <button :class="buttonClass">
+  <button :class="buttonClass" class="whitespace-nowrap">
     {{ text }}
   </button>
 </template>

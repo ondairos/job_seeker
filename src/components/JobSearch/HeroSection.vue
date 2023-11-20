@@ -24,7 +24,9 @@ export default defineComponent({
           <HeadLine />
           <JobSearchForm />
         </div>
-        <div class="col-start-7 col-span-5 self-center justify-self-center">
+        <div
+          class="col-start-7 col-span-5 self-center justify-self-center custom-sm:hidden sm:hidden md:block xl:block 2xl:block"
+        >
           <img
             class="w-80 h-80 object-contain"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/2367px-Vue.js_Logo_2.svg.png"
@@ -35,7 +37,7 @@ export default defineComponent({
       </div>
     </section>
 
-    <spotlight class="flex flex-row justify-center pb-16">
+    <spotlight class="flex md:flex-row custom-sm:flex-col custom-sm:mx-auto justify-center pb-16">
       <template #default="{ img, title, description }">
         <router-link
           to="/jobs/results"

@@ -23,7 +23,7 @@ export default defineComponent({
 
 <template>
   <ul>
-    <li v-for="spotlight in spotlights" :key="spotlight.id">
+    <li v-for="spotlight in spotlights" :key="spotlight.id" class="custom-sm:mb-2">
       <slot
         :img="spotlight.img"
         :title="spotlight.title"
