@@ -28,4 +28,4 @@ db2.json
 *.njsproj
 *.sln
 *.sw?
-src/playground2.ts
+src/playgroundTest.ts

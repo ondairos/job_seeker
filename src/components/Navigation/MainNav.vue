@@ -54,6 +54,7 @@ export default defineComponent({
   },
   methods: {
     handleClick() {
+      // @ts-expect-error store error
       this.$store.commit("LOGIN_USER");
     },
     ...mapMutations(["LOGIN_USER"]),
