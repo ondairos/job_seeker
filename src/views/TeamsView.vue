@@ -2,6 +2,7 @@
 import { defineComponent } from "vue";
 
 import HeaderContainer from "@/components/Shared/HeaderContainer.vue";
+import TeamsImage from "@/assets/teams_image.jpg";
 
 export default defineComponent({
   name: "TeamsView",
@@ -10,6 +11,9 @@ export default defineComponent({
   },
 
   setup() {
+    const TeamsImageCover = TeamsImage;
+
+    return { TeamsImageCover };
     // const myData = ref([]);
     // onMounted(() =>
     //   axios
@@ -37,6 +41,14 @@ export default defineComponent({
         <h2 class="w-full my-4 text-base font-light">
           It's awesome working here! Why don't you come join us?
         </h2>
+      </template>
+
+      <template #image>
+        <img
+          :src="TeamsImageCover"
+          alt="TestImage"
+          class="w-2/5 rounded-xl mx-auto border-2 border-solid border-slate-100"
+        />
       </template>
     </header-container>
   </div>

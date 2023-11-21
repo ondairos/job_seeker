@@ -11,6 +11,8 @@ export default defineComponent({
     <div class="mx-auto my-16 text-center">
       <slot name="title"> Sample Title </slot>
       <slot name="subtitle">Sample Subtitle</slot>
+
+      <slot name="image">Sample Image</slot>
     </div>
   </div>
 </template>
