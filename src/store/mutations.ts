@@ -34,6 +34,20 @@ const mutations = {
   UPDATE_SKILLS_SEARCH_TERM(state: GlobalState, payload: string) {
     state.skillsSearchTerm = payload;
   },
+  UPDATE_CURRENT_JOB(state: GlobalState, payload: object) {
+    state.currentJob = payload;
+  },
+  UPDATE_NEW_CURRENT_JOB(state: GlobalState, payload: number) {
+    console.log("payload here is ", payload);
+    console.log("all data jobs", all_data.jobs);
+
+    const newJob = all_data.jobs.filter((element: Job) => {
+      return element.id === payload;
+    });
+    console.log("new job is", newJob);
+
+    state.currentJob = newJob;
+  },
 };
 
 export default mutations;

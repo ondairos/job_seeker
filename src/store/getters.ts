@@ -23,6 +23,9 @@ const getters = {
   GET_DEGREES(state: GlobalState) {
     return state.degrees;
   },
+  GET_CURRENT_JOB(state: GlobalState) {
+    return state.currentJob;
+  },
 
   GET_UNIQUE_DEGREES(state: GlobalState) {
     return state.degrees.map((element) => element.degree);

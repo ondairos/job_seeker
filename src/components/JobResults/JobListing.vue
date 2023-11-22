@@ -1,6 +1,8 @@
 <script lang="ts">
 import { computed, defineComponent, PropType } from "vue";
 import { Job } from "@/types";
+import { useStore } from "vuex";
+import { key } from "@/store";
 
 export default defineComponent({
   name: "JobListing",
@@ -13,8 +15,15 @@ export default defineComponent({
   },
   setup(props) {
     const jobPageLink = computed(() => `/jobs/results/${props.job.id}`);
+    const store = useStore(key);
 
-    return { jobPageLink };
+    const handleClick = (job: object) => {
+      console.log("test click");
+      //populate state value with currentJob
+      store.commit("UPDATE_CURRENT_JOB", job);
+    };
+
+    return { jobPageLink, handleClick };
   },
 });
 </script>
@@ -22,8 +31,9 @@ export default defineComponent({
 <template>
   <li class="mb-7">
     <router-link
-      :to="jobPageLink"
+      :to="{ name: 'JobList', params: { id: job.id } }"
       class="block mx-auto bg-white border border-solid border-brand-gray-2 rounded hover:shadow-gray"
+      @click="handleClick(job)"
     >
       <div class="pt-5 pb-2 mx-8 border-b border-solid border-brand-gray-2">
         <h2 class="mb-2 text-2xl">{{ job.title }}</h2>
