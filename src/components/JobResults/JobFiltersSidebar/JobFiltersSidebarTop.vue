@@ -23,7 +23,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="flex flex-row justify-between">
+  <div class="flex md:flex-row custom-sm:flex-col justify-between">
     <h3 class="my-4 text-base font-semibold">What do you want to do?</h3>
     <div class="flex items-center text-sm">
       <ActionButton text="Clear Filters" type="secondary" @click="clearSelections" />

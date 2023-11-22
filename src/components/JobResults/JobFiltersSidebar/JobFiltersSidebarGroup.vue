@@ -46,17 +46,19 @@ export default defineComponent({
 <template>
   <div class="mt-5">
     <fieldset>
-      <ul class="flex flex-row flex-wrap">
-        <li v-for="value in uniqueValues" :key="value" class="w-1/2 h-8">
+      <ul class="flex md:flex-row custom-sm:flex-col md:flex-wrap">
+        <li v-for="value in uniqueValues" :key="value" class="w-1/2 h-8 mb-2">
           <input
             v-model="selectedValues"
             :value="value"
             :id="value"
             type="checkbox"
-            class="mr-3"
+            class="mr-1 md:inline-flex custom-sm:block"
             @change="selectValue"
           />
-          <label :for="value">{{ value }}</label>
+          <label :for="value" class="my-2 custom-sm:text-sm custom-sm:whitespace-nowrap">{{
+            value
+          }}</label>
         </li>
       </ul>
     </fieldset>
