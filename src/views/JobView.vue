@@ -35,7 +35,7 @@ export default defineComponent({
 <template>
   <main class="min-h-screen text-slate-300">
     <div
-      class="max-w-4xl md:px-16 md:pt-4 mx-auto mt-10 custom-sm:px-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+      class="max-w-4xl md:px-16 md:pt-4 mx-auto mt-10 pb-4 custom-sm:px-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
     >
       <a href="#">
         <h2 class="mb-2 text-4xl font-bold tracking-tight text-gray-600 dark:text-white">
@@ -77,14 +77,14 @@ export default defineComponent({
         <p v-for="descr in currentJob.description" :key="descr">{{ descr }}</p>
       </div>
 
-      <ul class="list-disc mb-4">
+      <ul class="list-disc mb-6">
         <p class="underline mb-1">Minimum Qualifications</p>
         <li v-for="minQual in currentJob.minimumQualifications" :key="minQual">
           {{ minQual }}
         </li>
       </ul>
 
-      <ul class="list-disc mb-4">
+      <ul class="list-disc mb-6">
         <p class="underline mb-1">Preferred Qualifications</p>
         <li v-for="prefQual in currentJob.preferredQualifications" :key="prefQual">
           {{ prefQual }}
