@@ -45,7 +45,7 @@ export default defineComponent({
 
 <template>
   <section class="mb-16">
-    <h1 class="font-bold tracking-tighter text-8xl mb-14">
+    <h1 class="font-bold tracking-tighter md:text-8xl custom-sm:text-6xl mb-14">
       <span :class="actionClasses">{{ action }}</span>
       <br />
       for everyone
