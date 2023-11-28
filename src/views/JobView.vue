@@ -33,7 +33,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <main class="min-h-screen text-slate-300">
+  <main class="min-h-screen dark:text-slate-300 text-black">
     <div
       class="max-w-4xl md:px-16 md:pt-4 mx-auto mt-10 pb-4 custom-sm:px-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
     >
