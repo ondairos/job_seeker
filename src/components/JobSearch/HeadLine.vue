@@ -45,12 +45,16 @@ export default defineComponent({
 
 <template>
   <section class="mb-16">
-    <h1 class="font-bold tracking-tighter md:text-8xl custom-sm:text-6xl mb-14">
+    <h1
+      class="dark:text-white text-black font-bold tracking-tighter md:text-8xl custom-sm:text-6xl mb-14"
+    >
       <span :class="actionClasses">{{ action }}</span>
       <br />
       for everyone
     </h1>
-    <h2 class="text-3xl font-light">Find your next job at Job Seeker.</h2>
+    <h2 class="dark:text-white text-black text-3xl font-light">
+      Find your next job at Job Seeker.
+    </h2>
   </section>
 </template>
 

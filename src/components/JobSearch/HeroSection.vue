@@ -17,7 +17,7 @@ export default defineComponent({
 
 <template>
   <main class="flex flex-col h-screen">
-    <section class="text-white flex flex-col pt-10 pb-20">
+    <section class="dark:text-white text-black flex flex-col pt-10 pb-20">
       <div class="grid grid-cols-12">
         <div class="col-start-1 col-span-1"></div>
         <div class="col-start-2 col-span-5">
